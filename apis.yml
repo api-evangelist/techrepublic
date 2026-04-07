@@ -1,21 +1,20 @@
 aid: techrepublic
 name: TechRepublic
 description: >-
-  TechRepublic (https://www.techrepublic.com/) is a leading IT and enterprise
-  technology media site that provides IT professionals with news, analysis, tips,
-  tutorials, best practices, and research on business technology. Covering topics
-  including cloud computing, cybersecurity, artificial intelligence, enterprise
-  software, hardware, and data management, TechRepublic serves technology decision-makers
-  and practitioners across industries. Part of the TechnologyAdvice media network,
-  TechRepublic offers newsletters, RSS feeds, resource downloads, and a community
-  forum alongside its editorial content.
+  TechRepublic (https://www.techrepublic.com/) is a leading IT and enterprise technology
+  media site that provides IT professionals with news, analysis, tips, tutorials,
+  best practices, and research on business technology. Covering topics including cloud
+  computing, cybersecurity, artificial intelligence, enterprise software, hardware,
+  and data management, TechRepublic serves technology decision-makers and practitioners
+  across industries.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Media
   - Technology News
   - Enterprise IT
-url: https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml
 created: '2026-03-24'
 modified: '2026-03-24'
 specificationVersion: '0.19'
