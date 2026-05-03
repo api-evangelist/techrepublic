@@ -1,0 +1,39 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.techrepublic.com/wp-json/wp/v2/posts/98234",
+    "parameters": {
+      "_embed": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "body": {
+      "id": 98234,
+      "date": "2026-04-28T14:30:00",
+      "date_gmt": "2026-04-28T19:30:00",
+      "modified": "2026-04-28T14:45:00",
+      "modified_gmt": "2026-04-28T19:45:00",
+      "slug": "best-ai-tools-enterprise-2026",
+      "status": "publish",
+      "link": "https://www.techrepublic.com/article/best-ai-tools-enterprise-2026/",
+      "title": {
+        "rendered": "Best AI Tools for Enterprise in 2026"
+      },
+      "content": {
+        "rendered": "<p>Artificial intelligence tools have become essential for enterprise productivity in 2026. From AI-powered code assistants to intelligent document processing platforms, the market has matured significantly.</p><h2>Key Categories</h2><ul><li>Code Assistance</li><li>Document Intelligence</li><li>AI-Powered Security</li><li>Conversational AI Platforms</li></ul>",
+        "protected": false
+      },
+      "excerpt": {
+        "rendered": "<p>We evaluated the top AI tools available to enterprise teams in 2026 across productivity, security, and data analytics use cases.</p>"
+      },
+      "author": 451,
+      "featured_media": 87234,
+      "categories": [12, 45, 78],
+      "tags": [201, 345, 567]
+    }
+  }
+}

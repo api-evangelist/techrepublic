@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/techrepublic/main/json-schema/techrepublic-post-schema.json",
+  "title": "TechRepublic Post",
+  "description": "A TechRepublic article, news post, or technology analysis piece returned from the WordPress REST API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the post."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the post was published, in the site's timezone."
+    },
+    "date_gmt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the post was published, as GMT."
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the post was last modified, in the site's timezone."
+    },
+    "modified_gmt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the post was last modified, as GMT."
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier for the post unique to its type.",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the post.",
+      "enum": ["publish", "future", "draft", "pending", "private"]
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the post."
+    },
+    "title": {
+      "type": "object",
+      "description": "The title for the post.",
+      "properties": {
+        "rendered": {
+          "type": "string",
+          "description": "HTML representation of the title."
+        }
+      },
+      "required": ["rendered"]
+    },
+    "content": {
+      "type": "object",
+      "description": "The content for the post.",
+      "properties": {
+        "rendered": {
+          "type": "string",
+          "description": "HTML representation of the content."
+        },
+        "protected": {
+          "type": "boolean",
+          "description": "Whether the content is protected with a password."
+        }
+      },
+      "required": ["rendered", "protected"]
+    },
+    "excerpt": {
+      "type": "object",
+      "description": "The excerpt for the post.",
+      "properties": {
+        "rendered": {
+          "type": "string",
+          "description": "HTML representation of the excerpt."
+        },
+        "protected": {
+          "type": "boolean"
+        }
+      },
+      "required": ["rendered"]
+    },
+    "author": {
+      "type": "integer",
+      "description": "The ID for the author of the post."
+    },
+    "featured_media": {
+      "type": "integer",
+      "description": "The ID of the featured media for the post."
+    },
+    "categories": {
+      "type": "array",
+      "description": "The terms assigned to the post in the category taxonomy.",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "The terms assigned to the post in the post_tag taxonomy.",
+      "items": {
+        "type": "integer"
+      }
+    }
+  },
+  "required": ["id", "date", "slug", "status", "link", "title", "content", "author"]
+}

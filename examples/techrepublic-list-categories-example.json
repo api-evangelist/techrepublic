@@ -1,0 +1,71 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.techrepublic.com/wp-json/wp/v2/categories",
+    "parameters": {
+      "per_page": 5,
+      "orderby": "count",
+      "order": "desc"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "X-WP-Total": "87",
+      "X-WP-TotalPages": "18",
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "body": [
+      {
+        "id": 12,
+        "count": 4823,
+        "description": "News, tips, and analysis on artificial intelligence and machine learning.",
+        "link": "https://www.techrepublic.com/topic/artificial-intelligence/",
+        "name": "Artificial Intelligence",
+        "slug": "artificial-intelligence",
+        "taxonomy": "category",
+        "parent": 0
+      },
+      {
+        "id": 34,
+        "count": 3912,
+        "description": "Coverage of cybersecurity threats, defenses, and enterprise security practices.",
+        "link": "https://www.techrepublic.com/topic/security/",
+        "name": "Security",
+        "slug": "security",
+        "taxonomy": "category",
+        "parent": 0
+      },
+      {
+        "id": 45,
+        "count": 3654,
+        "description": "Cloud computing news, reviews, and best practices for enterprise teams.",
+        "link": "https://www.techrepublic.com/topic/cloud/",
+        "name": "Cloud",
+        "slug": "cloud",
+        "taxonomy": "category",
+        "parent": 0
+      },
+      {
+        "id": 78,
+        "count": 2987,
+        "description": "Enterprise software reviews, news, and product comparisons.",
+        "link": "https://www.techrepublic.com/topic/software/",
+        "name": "Software",
+        "slug": "software",
+        "taxonomy": "category",
+        "parent": 0
+      },
+      {
+        "id": 92,
+        "count": 2341,
+        "description": "Developer tools, programming languages, and software engineering best practices.",
+        "link": "https://www.techrepublic.com/topic/developer/",
+        "name": "Developer",
+        "slug": "developer",
+        "taxonomy": "category",
+        "parent": 0
+      }
+    ]
+  }
+}

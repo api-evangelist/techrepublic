@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/techrepublic/main/json-schema/techrepublic-category-schema.json",
+  "title": "TechRepublic Category",
+  "description": "A TechRepublic content category representing a technology topic area.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the category term."
+    },
+    "count": {
+      "type": "integer",
+      "description": "Number of published posts within the category.",
+      "minimum": 0
+    },
+    "description": {
+      "type": "string",
+      "description": "HTML description of the category."
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the category archive page."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the category."
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier for the category.",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "taxonomy": {
+      "type": "string",
+      "description": "Type attribution for the term.",
+      "enum": ["category"]
+    },
+    "parent": {
+      "type": "integer",
+      "description": "The parent term ID. 0 if top-level."
+    }
+  },
+  "required": ["id", "name", "slug", "taxonomy"]
+}

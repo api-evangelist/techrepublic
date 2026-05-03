@@ -1,0 +1,802 @@
+openapi: 3.0.3
+info:
+  title: TechRepublic WordPress REST API
+  description: >-
+    The TechRepublic WordPress REST API provides JSON endpoints for accessing
+    posts, pages, categories, tags, authors, media, and other content types
+    published on TechRepublic.com. Built on the standard WordPress REST API
+    framework, it supports filtering, pagination, and full-text search across
+    all TechRepublic technology news and analysis content.
+  version: 2.0.0
+  contact:
+    url: https://www.techrepublic.com/about/
+  license:
+    name: WordPress License (GPL-2.0)
+    url: https://wordpress.org/about/license/
+servers:
+  - url: https://www.techrepublic.com/wp-json/wp/v2
+    description: TechRepublic WordPress REST API v2
+paths:
+  /posts:
+    get:
+      operationId: listPosts
+      summary: List Posts
+      description: Retrieve a collection of published posts from TechRepublic.
+      tags:
+        - Posts
+      parameters:
+        - name: page
+          in: query
+          description: Current page of the collection.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          description: Maximum number of items to be returned in result set.
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          required: false
+          schema:
+            type: string
+        - name: after
+          in: query
+          description: Limit response to posts published after a given ISO 8601 date.
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: before
+          in: query
+          description: Limit response to posts published before a given ISO 8601 date.
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: categories
+          in: query
+          description: Limit result set to all items that have the specified term assigned in the categories taxonomy.
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+        - name: tags
+          in: query
+          description: Limit result set to all items that have the specified term assigned in the tags taxonomy.
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+        - name: author
+          in: query
+          description: Limit result set to posts assigned to specific authors.
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+        - name: orderby
+          in: query
+          description: Sort collection by object attribute.
+          required: false
+          schema:
+            type: string
+            enum:
+              - author
+              - date
+              - id
+              - include
+              - modified
+              - parent
+              - relevance
+              - slug
+              - include_slugs
+              - title
+            default: date
+        - name: order
+          in: query
+          description: Order sort attribute ascending or descending.
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: desc
+        - name: _embed
+          in: query
+          description: Embed linked resources in the response.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A list of posts.
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages in the collection.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+  /posts/{id}:
+    get:
+      operationId: getPost
+      summary: Get Post
+      description: Retrieve a specific post by its ID.
+      tags:
+        - Posts
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier for the post.
+          required: true
+          schema:
+            type: integer
+        - name: _embed
+          in: query
+          description: Embed linked resources in the response.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A single post object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '404':
+          description: Post not found.
+  /categories:
+    get:
+      operationId: listCategories
+      summary: List Categories
+      description: Retrieve a collection of categories available on TechRepublic.
+      tags:
+        - Categories
+      parameters:
+        - name: page
+          in: query
+          description: Current page of the collection.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          description: Maximum number of items to be returned in result set.
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          required: false
+          schema:
+            type: string
+        - name: orderby
+          in: query
+          description: Sort collection by object attribute.
+          required: false
+          schema:
+            type: string
+            enum:
+              - id
+              - include
+              - name
+              - slug
+              - include_slugs
+              - term_group
+              - description
+              - count
+            default: name
+        - name: hide_empty
+          in: query
+          description: Whether to hide terms not assigned to any posts.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A list of categories.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+  /categories/{id}:
+    get:
+      operationId: getCategory
+      summary: Get Category
+      description: Retrieve a specific category by its ID.
+      tags:
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier for the category.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single category object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '404':
+          description: Category not found.
+  /tags:
+    get:
+      operationId: listTags
+      summary: List Tags
+      description: Retrieve a collection of tags used on TechRepublic.
+      tags:
+        - Tags
+      parameters:
+        - name: page
+          in: query
+          description: Current page of the collection.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          description: Maximum number of items to be returned in result set.
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          required: false
+          schema:
+            type: string
+        - name: hide_empty
+          in: query
+          description: Whether to hide terms not assigned to any posts.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A list of tags.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+  /tags/{id}:
+    get:
+      operationId: getTag
+      summary: Get Tag
+      description: Retrieve a specific tag by its ID.
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier for the tag.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single tag object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '404':
+          description: Tag not found.
+  /users:
+    get:
+      operationId: listAuthors
+      summary: List Authors
+      description: Retrieve a collection of authors who have published on TechRepublic.
+      tags:
+        - Authors
+      parameters:
+        - name: page
+          in: query
+          description: Current page of the collection.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          description: Maximum number of items to be returned in result set.
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of authors.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+  /users/{id}:
+    get:
+      operationId: getAuthor
+      summary: Get Author
+      description: Retrieve a specific author profile by ID.
+      tags:
+        - Authors
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier for the author.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single author object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        '404':
+          description: Author not found.
+  /media:
+    get:
+      operationId: listMedia
+      summary: List Media
+      description: Retrieve a collection of media items from TechRepublic.
+      tags:
+        - Media
+      parameters:
+        - name: page
+          in: query
+          description: Current page of the collection.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          description: Maximum number of items to be returned in result set.
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          required: false
+          schema:
+            type: string
+        - name: media_type
+          in: query
+          description: Limit result set to attachments of a particular media type.
+          required: false
+          schema:
+            type: string
+            enum:
+              - image
+              - video
+              - text
+              - application
+              - audio
+        - name: mime_type
+          in: query
+          description: Limit result set to attachments of a particular MIME type.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of media items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaItem'
+  /media/{id}:
+    get:
+      operationId: getMedia
+      summary: Get Media
+      description: Retrieve a specific media item by ID.
+      tags:
+        - Media
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier for the media item.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single media item object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+        '404':
+          description: Media item not found.
+  /pages:
+    get:
+      operationId: listPages
+      summary: List Pages
+      description: Retrieve a collection of pages published on TechRepublic.
+      tags:
+        - Pages
+      parameters:
+        - name: page
+          in: query
+          description: Current page of the collection.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          description: Maximum number of items to be returned in result set.
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of pages.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Page'
+  /pages/{id}:
+    get:
+      operationId: getPage
+      summary: Get Page
+      description: Retrieve a specific page by ID.
+      tags:
+        - Pages
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier for the page.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single page object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+        '404':
+          description: Page not found.
+components:
+  schemas:
+    Post:
+      type: object
+      description: A TechRepublic article or news post.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the post.
+        date:
+          type: string
+          format: date-time
+          description: The date the post was published, in the site's timezone.
+        date_gmt:
+          type: string
+          format: date-time
+          description: The date the post was published, as GMT.
+        modified:
+          type: string
+          format: date-time
+          description: The date the post was last modified, in the site's timezone.
+        modified_gmt:
+          type: string
+          format: date-time
+          description: The date the post was last modified, as GMT.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the post unique to its type.
+        status:
+          type: string
+          description: A named status for the post.
+          enum:
+            - publish
+            - future
+            - draft
+            - pending
+            - private
+        link:
+          type: string
+          format: uri
+          description: URL to the post.
+        title:
+          type: object
+          description: The title for the post.
+          properties:
+            rendered:
+              type: string
+              description: HTML representation of the title.
+        content:
+          type: object
+          description: The content for the post.
+          properties:
+            rendered:
+              type: string
+              description: HTML representation of the content.
+            protected:
+              type: boolean
+              description: Whether the content is protected with a password.
+        excerpt:
+          type: object
+          description: The excerpt for the post.
+          properties:
+            rendered:
+              type: string
+              description: HTML representation of the excerpt.
+        author:
+          type: integer
+          description: The ID for the author of the post.
+        featured_media:
+          type: integer
+          description: The ID of the featured media for the post.
+        categories:
+          type: array
+          description: The terms assigned to the post in the category taxonomy.
+          items:
+            type: integer
+        tags:
+          type: array
+          description: The terms assigned to the post in the post_tag taxonomy.
+          items:
+            type: integer
+    Category:
+      type: object
+      description: A TechRepublic content category or topic area.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the term.
+        count:
+          type: integer
+          description: Number of published posts within the term.
+        description:
+          type: string
+          description: HTML description of the term.
+        link:
+          type: string
+          format: uri
+          description: URL of the term.
+        name:
+          type: string
+          description: HTML title for the term.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the term unique to its type.
+        taxonomy:
+          type: string
+          description: Type attribution for the term.
+        parent:
+          type: integer
+          description: The parent term ID.
+    Tag:
+      type: object
+      description: A tag used to classify TechRepublic content.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the term.
+        count:
+          type: integer
+          description: Number of published posts within the term.
+        description:
+          type: string
+          description: HTML description of the term.
+        link:
+          type: string
+          format: uri
+          description: URL of the term.
+        name:
+          type: string
+          description: HTML title for the term.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the term unique to its type.
+        taxonomy:
+          type: string
+          description: Type attribution for the term.
+    Author:
+      type: object
+      description: A TechRepublic author or contributor.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the user.
+        name:
+          type: string
+          description: Display name for the user.
+        url:
+          type: string
+          format: uri
+          description: URL of the user.
+        description:
+          type: string
+          description: Description of the user.
+        link:
+          type: string
+          format: uri
+          description: Author archive URL.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the user.
+        avatar_urls:
+          type: object
+          description: Avatar URLs for the user.
+          properties:
+            '24':
+              type: string
+              format: uri
+            '48':
+              type: string
+              format: uri
+            '96':
+              type: string
+              format: uri
+    MediaItem:
+      type: object
+      description: A media attachment associated with TechRepublic content.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the media item.
+        date:
+          type: string
+          format: date-time
+          description: The date the media was published.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the media item.
+        status:
+          type: string
+          description: A named status for the media item.
+        link:
+          type: string
+          format: uri
+          description: URL to the media item page.
+        title:
+          type: object
+          description: The title for the media item.
+          properties:
+            rendered:
+              type: string
+        alt_text:
+          type: string
+          description: Alternative text to display when attachment is not displayed.
+        caption:
+          type: object
+          description: The caption for the media item.
+          properties:
+            rendered:
+              type: string
+        media_type:
+          type: string
+          description: Type of resource.
+          enum:
+            - image
+            - file
+        mime_type:
+          type: string
+          description: MIME type of the media item.
+        source_url:
+          type: string
+          format: uri
+          description: URL to the original attachment file.
+        media_details:
+          type: object
+          description: Details about the media file.
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+            file:
+              type: string
+    Page:
+      type: object
+      description: A static page on TechRepublic.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the page.
+        date:
+          type: string
+          format: date-time
+          description: The date the page was published.
+        modified:
+          type: string
+          format: date-time
+          description: The date the page was last modified.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the page unique to its type.
+        status:
+          type: string
+          description: A named status for the page.
+        link:
+          type: string
+          format: uri
+          description: URL to the page.
+        title:
+          type: object
+          description: The title for the page.
+          properties:
+            rendered:
+              type: string
+        content:
+          type: object
+          description: The content for the page.
+          properties:
+            rendered:
+              type: string
+        excerpt:
+          type: object
+          description: The excerpt for the page.
+          properties:
+            rendered:
+              type: string
+        author:
+          type: integer
+          description: The ID for the author of the page.
+        parent:
+          type: integer
+          description: The ID for the parent of the page.
+        menu_order:
+          type: integer
+          description: The order of the page in relation to other pages.

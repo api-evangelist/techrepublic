@@ -1,0 +1,70 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.techrepublic.com/wp-json/wp/v2/posts",
+    "parameters": {
+      "per_page": 2,
+      "search": "artificial intelligence",
+      "orderby": "date",
+      "order": "desc"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "X-WP-Total": "842",
+      "X-WP-TotalPages": "421",
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "body": [
+      {
+        "id": 98234,
+        "date": "2026-04-28T14:30:00",
+        "date_gmt": "2026-04-28T19:30:00",
+        "modified": "2026-04-28T14:45:00",
+        "modified_gmt": "2026-04-28T19:45:00",
+        "slug": "best-ai-tools-enterprise-2026",
+        "status": "publish",
+        "link": "https://www.techrepublic.com/article/best-ai-tools-enterprise-2026/",
+        "title": {
+          "rendered": "Best AI Tools for Enterprise in 2026"
+        },
+        "content": {
+          "rendered": "<p>Artificial intelligence tools have become essential for enterprise productivity...</p>",
+          "protected": false
+        },
+        "excerpt": {
+          "rendered": "<p>We evaluated the top AI tools available to enterprise teams in 2026 across productivity, security, and data analytics use cases.</p>"
+        },
+        "author": 451,
+        "featured_media": 87234,
+        "categories": [12, 45, 78],
+        "tags": [201, 345, 567]
+      },
+      {
+        "id": 98189,
+        "date": "2026-04-25T09:15:00",
+        "date_gmt": "2026-04-25T14:15:00",
+        "modified": "2026-04-25T09:30:00",
+        "modified_gmt": "2026-04-25T14:30:00",
+        "slug": "generative-ai-security-risks-it-leaders",
+        "status": "publish",
+        "link": "https://www.techrepublic.com/article/generative-ai-security-risks-it-leaders/",
+        "title": {
+          "rendered": "Generative AI Security Risks IT Leaders Must Address"
+        },
+        "content": {
+          "rendered": "<p>As generative AI tools proliferate in the enterprise, IT security teams face new challenges...</p>",
+          "protected": false
+        },
+        "excerpt": {
+          "rendered": "<p>IT leaders must proactively address data leakage, prompt injection, and model hallucination risks when deploying generative AI.</p>"
+        },
+        "author": 389,
+        "featured_media": 86912,
+        "categories": [12, 34],
+        "tags": [201, 298, 412]
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "wp": "https://api.w.org/",
+    "techrepublic": "https://www.techrepublic.com/",
+
+    "Post": "schema:Article",
+    "id": "@id",
+    "date": "schema:datePublished",
+    "date_gmt": "schema:datePublished",
+    "modified": "schema:dateModified",
+    "modified_gmt": "schema:dateModified",
+    "slug": "schema:identifier",
+    "status": "schema:creativeWorkStatus",
+    "link": "schema:url",
+    "title": {
+      "@id": "schema:headline",
+      "@type": "@id"
+    },
+    "content": {
+      "@id": "schema:articleBody",
+      "@type": "@id"
+    },
+    "excerpt": {
+      "@id": "schema:description",
+      "@type": "@id"
+    },
+    "author": {
+      "@id": "schema:author",
+      "@type": "@id"
+    },
+    "featured_media": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "categories": {
+      "@id": "schema:about",
+      "@container": "@list"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@list"
+    },
+    "rendered": "schema:text",
+    "protected": "schema:isAccessibleForFree",
+
+    "Category": "schema:DefinedTerm",
+    "Tag": "schema:DefinedTerm",
+    "count": "schema:articleCount",
+    "description": "schema:description",
+    "name": "schema:name",
+    "taxonomy": "schema:inDefinedTermSet",
+    "parent": "schema:parentItem",
+
+    "Author": "schema:Person",
+    "url": "schema:url",
+    "avatar_urls": "schema:image",
+
+    "MediaItem": "schema:ImageObject",
+    "alt_text": "schema:alternateName",
+    "caption": "schema:caption",
+    "media_type": "schema:encodingFormat",
+    "mime_type": "schema:encodingFormat",
+    "source_url": "schema:contentUrl",
+    "media_details": "schema:associatedMedia",
+
+    "Page": "schema:WebPage"
+  }
+}

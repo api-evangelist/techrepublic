@@ -1,0 +1,118 @@
+{
+  "title": "TechRepublic Post Structure",
+  "description": "JSON structure documentation for TechRepublic article/post objects returned by the WordPress REST API.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "id",
+      "type": "integer",
+      "required": true,
+      "description": "Unique numeric identifier for the post. Used as the path parameter for single-post retrieval."
+    },
+    {
+      "name": "date",
+      "type": "string (date-time)",
+      "required": true,
+      "description": "Publication date in the site's timezone. ISO 8601 format."
+    },
+    {
+      "name": "date_gmt",
+      "type": "string (date-time)",
+      "required": false,
+      "description": "Publication date in UTC/GMT. ISO 8601 format."
+    },
+    {
+      "name": "modified",
+      "type": "string (date-time)",
+      "required": false,
+      "description": "Last modification date in the site's timezone."
+    },
+    {
+      "name": "slug",
+      "type": "string",
+      "required": true,
+      "description": "URL-safe alphanumeric slug for the post. Used in the post's permalink."
+    },
+    {
+      "name": "status",
+      "type": "string (enum)",
+      "required": true,
+      "description": "Publication status. Public API only returns 'publish' status posts.",
+      "values": ["publish", "future", "draft", "pending", "private"]
+    },
+    {
+      "name": "link",
+      "type": "string (uri)",
+      "required": true,
+      "description": "Full canonical URL to the post on TechRepublic.com."
+    },
+    {
+      "name": "title",
+      "type": "object",
+      "required": true,
+      "description": "Post title wrapper object.",
+      "fields": [
+        {
+          "name": "rendered",
+          "type": "string",
+          "description": "HTML-rendered title text. May contain HTML entities."
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "type": "object",
+      "required": true,
+      "description": "Post body content wrapper object.",
+      "fields": [
+        {
+          "name": "rendered",
+          "type": "string",
+          "description": "Full HTML-rendered body content of the post."
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "description": "True if the post content is behind a password."
+        }
+      ]
+    },
+    {
+      "name": "excerpt",
+      "type": "object",
+      "required": false,
+      "description": "Post summary/excerpt wrapper object.",
+      "fields": [
+        {
+          "name": "rendered",
+          "type": "string",
+          "description": "HTML-rendered excerpt/summary."
+        }
+      ]
+    },
+    {
+      "name": "author",
+      "type": "integer",
+      "required": true,
+      "description": "ID of the post's author. Use /users/{id} to fetch author details."
+    },
+    {
+      "name": "featured_media",
+      "type": "integer",
+      "required": false,
+      "description": "ID of the featured image/media. 0 if no featured media."
+    },
+    {
+      "name": "categories",
+      "type": "array[integer]",
+      "required": false,
+      "description": "Array of category term IDs assigned to this post."
+    },
+    {
+      "name": "tags",
+      "type": "array[integer]",
+      "required": false,
+      "description": "Array of tag term IDs assigned to this post."
+    }
+  ]
+}

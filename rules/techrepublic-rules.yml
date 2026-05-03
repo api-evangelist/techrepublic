@@ -1,0 +1,127 @@
+extends:
+  - spectral:oas
+
+rules:
+  # TechRepublic WordPress REST API conventions
+
+  techrepublic-operation-ids-camel-case:
+    description: Operation IDs must use camelCase naming convention.
+    message: "Operation ID '{{value}}' must use camelCase (e.g., listPosts, getPost)."
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  techrepublic-pagination-parameters:
+    description: Collection endpoints must support page and per_page query parameters.
+    message: "Collection GET endpoints should include 'page' and 'per_page' query parameters."
+    severity: warn
+    given: "$.paths[*].get"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            parameters:
+              type: array
+
+  techrepublic-response-array-for-collections:
+    description: Collection endpoints must return an array schema.
+    message: "Collection endpoints (list*) must return an array in their 200 response."
+    severity: error
+    given: "$.paths[*].get.responses.200.content.application/json.schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  techrepublic-path-ids-in-path:
+    description: Resource ID path parameters must use {id} naming.
+    message: "Path parameter for resource identifier should be named 'id'."
+    severity: warn
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  techrepublic-responses-have-descriptions:
+    description: All responses must have a description.
+    message: "Response must include a description."
+    severity: error
+    given: "$.paths[*][*].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  techrepublic-operations-have-tags:
+    description: All operations must be tagged.
+    message: "Operation must include at least one tag."
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  techrepublic-operations-have-summaries:
+    description: All operations must have a summary.
+    message: "Operation must include a summary."
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: summary
+      function: truthy
+
+  techrepublic-title-case-summaries:
+    description: Operation summaries must use Title Case.
+    message: "Summary '{{value}}' should use Title Case."
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"
+
+  techrepublic-components-schemas-defined:
+    description: API must define reusable schemas in components.
+    message: "API should define schemas in components/schemas."
+    severity: warn
+    given: "$.components"
+    then:
+      field: schemas
+      function: truthy
+
+  techrepublic-no-empty-paths:
+    description: All paths must have at least one operation defined.
+    message: "Path '{{path}}' has no operations defined."
+    severity: error
+    given: "$.paths[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          minProperties: 1
+
+  techrepublic-info-contact:
+    description: API info must include a contact.
+    message: "API info should include a contact URL or email."
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  techrepublic-servers-defined:
+    description: API must define at least one server.
+    message: "API must include a servers array with at least one entry."
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy

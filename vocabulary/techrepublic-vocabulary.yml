@@ -1,0 +1,152 @@
+vocabulary:
+  provider: TechRepublic
+  description: >-
+    Vocabulary for TechRepublic, covering technology news and analysis domains,
+    content taxonomy, WordPress REST API terminology, and enterprise IT subject areas.
+  version: '2026-05-03'
+  terms:
+    - term: Post
+      definition: >-
+        An article, news item, tutorial, or analysis piece published on TechRepublic.com.
+        Exposed via the WordPress REST API at /wp-json/wp/v2/posts.
+      synonyms:
+        - Article
+        - News Post
+        - Tech Article
+      relatedTerms:
+        - Category
+        - Tag
+        - Author
+        - Featured Media
+
+    - term: Category
+      definition: >-
+        A hierarchical taxonomy term used to classify TechRepublic content by
+        technology domain or subject area (e.g., Artificial Intelligence, Security, Cloud).
+      synonyms:
+        - Topic
+        - Section
+      relatedTerms:
+        - Post
+        - Tag
+
+    - term: Tag
+      definition: >-
+        A flat taxonomy term providing additional keyword classification for
+        TechRepublic posts. More granular than categories.
+      synonyms:
+        - Keyword
+        - Label
+      relatedTerms:
+        - Post
+        - Category
+
+    - term: Author
+      definition: >-
+        A TechRepublic contributor, staff writer, freelancer, or analyst who
+        publishes articles on the platform.
+      synonyms:
+        - Contributor
+        - Writer
+        - Analyst
+      relatedTerms:
+        - Post
+
+    - term: Featured Media
+      definition: >-
+        The primary image or media attachment associated with a TechRepublic post,
+        displayed as the hero image in article listings and social previews.
+      synonyms:
+        - Hero Image
+        - Thumbnail
+      relatedTerms:
+        - Post
+        - Media
+
+    - term: RSS Feed
+      definition: >-
+        A standard XML-based syndication feed (RSS 2.0 or Atom) provided by
+        TechRepublic for content distribution across 150+ topic channels.
+      synonyms:
+        - Atom Feed
+        - Syndication Feed
+      relatedTerms:
+        - Post
+        - Category
+
+    - term: WordPress REST API
+      definition: >-
+        The standard JSON REST API built into WordPress, exposed by TechRepublic
+        at /wp-json/wp/v2, providing programmatic access to posts, pages, users,
+        categories, tags, and media.
+      synonyms:
+        - WP REST API
+        - wp-json
+      relatedTerms:
+        - Post
+        - Page
+        - Media
+
+    - term: Slug
+      definition: >-
+        A URL-safe alphanumeric identifier derived from the title, used in
+        WordPress permalinks and API filtering.
+      synonyms:
+        - Permalink Slug
+        - URL Slug
+      relatedTerms:
+        - Post
+        - Category
+        - Tag
+
+    - term: Excerpt
+      definition: >-
+        A short summary or teaser text for a TechRepublic article, generated
+        automatically or manually by editors.
+      synonyms:
+        - Summary
+        - Teaser
+        - Blurb
+      relatedTerms:
+        - Post
+
+    - term: Artificial Intelligence
+      definition: >-
+        TechRepublic's primary technology coverage area, encompassing machine learning,
+        generative AI, large language models, automation, and enterprise AI adoption.
+      tags:
+        - Enterprise IT
+        - Technology News
+      relatedTerms:
+        - Category
+        - Post
+
+    - term: Cybersecurity
+      definition: >-
+        Coverage of threats, defenses, compliance, identity and access management,
+        and enterprise security practices. One of TechRepublic's top categories.
+      tags:
+        - Enterprise IT
+        - Security
+      relatedTerms:
+        - Category
+
+    - term: Cloud Computing
+      definition: >-
+        Coverage of cloud platforms (AWS, Azure, GCP), cloud architecture, migration,
+        and enterprise cloud strategy across TechRepublic's cloud category.
+      tags:
+        - Enterprise IT
+        - Infrastructure
+      relatedTerms:
+        - Category
+
+    - term: Enterprise Software
+      definition: >-
+        Coverage of business applications, SaaS platforms, ERP, CRM, and productivity
+        software reviewed and analyzed by TechRepublic.
+      tags:
+        - Enterprise IT
+        - Software
+      relatedTerms:
+        - Category
