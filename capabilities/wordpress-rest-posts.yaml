@@ -1,0 +1,184 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TechRepublic WordPress REST API — Posts
+  description: 'TechRepublic WordPress REST API — Posts. 2 operations. Lead operation: List Posts. Self-contained Naftiko
+    capability covering one Techrepublic business surface.'
+  tags:
+  - Techrepublic
+  - Posts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TECHREPUBLIC_API_KEY: TECHREPUBLIC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wordpress-rest-posts
+    baseUri: https://www.techrepublic.com/wp-json/wp/v2
+    description: TechRepublic WordPress REST API — Posts business capability. Self-contained, no shared references.
+    resources:
+    - name: posts
+      path: /posts
+      operations:
+      - name: listposts
+        method: GET
+        description: List Posts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Current page of the collection.
+        - name: per_page
+          in: query
+          type: integer
+          description: Maximum number of items to be returned in result set.
+        - name: search
+          in: query
+          type: string
+          description: Limit results to those matching a string.
+        - name: after
+          in: query
+          type: string
+          description: Limit response to posts published after a given ISO 8601 date.
+        - name: before
+          in: query
+          type: string
+          description: Limit response to posts published before a given ISO 8601 date.
+        - name: categories
+          in: query
+          type: array
+          description: Limit result set to all items that have the specified term assigned in the categories taxonomy.
+        - name: tags
+          in: query
+          type: array
+          description: Limit result set to all items that have the specified term assigned in the tags taxonomy.
+        - name: author
+          in: query
+          type: array
+          description: Limit result set to posts assigned to specific authors.
+        - name: orderby
+          in: query
+          type: string
+          description: Sort collection by object attribute.
+        - name: order
+          in: query
+          type: string
+          description: Order sort attribute ascending or descending.
+        - name: _embed
+          in: query
+          type: boolean
+          description: Embed linked resources in the response.
+    - name: posts-id
+      path: /posts/{id}
+      operations:
+      - name: getpost
+        method: GET
+        description: Get Post
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the post.
+          required: true
+        - name: _embed
+          in: query
+          type: boolean
+          description: Embed linked resources in the response.
+  exposes:
+  - type: rest
+    namespace: wordpress-rest-posts-rest
+    port: 8080
+    description: REST adapter for TechRepublic WordPress REST API — Posts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/posts
+      name: posts
+      description: REST surface for posts.
+      operations:
+      - method: GET
+        name: listposts
+        description: List Posts
+        call: wordpress-rest-posts.listposts
+        with:
+          page: rest.page
+          per_page: rest.per_page
+          search: rest.search
+          after: rest.after
+          before: rest.before
+          categories: rest.categories
+          tags: rest.tags
+          author: rest.author
+          orderby: rest.orderby
+          order: rest.order
+          _embed: rest._embed
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/posts/{id}
+      name: posts-id
+      description: REST surface for posts-id.
+      operations:
+      - method: GET
+        name: getpost
+        description: Get Post
+        call: wordpress-rest-posts.getpost
+        with:
+          id: rest.id
+          _embed: rest._embed
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wordpress-rest-posts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TechRepublic WordPress REST API — Posts. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-posts
+      description: List Posts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wordpress-rest-posts.listposts
+      with:
+        page: tools.page
+        per_page: tools.per_page
+        search: tools.search
+        after: tools.after
+        before: tools.before
+        categories: tools.categories
+        tags: tools.tags
+        author: tools.author
+        orderby: tools.orderby
+        order: tools.order
+        _embed: tools._embed
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-post
+      description: Get Post
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wordpress-rest-posts.getpost
+      with:
+        id: tools.id
+        _embed: tools._embed
+      outputParameters:
+      - type: object
+        mapping: $.

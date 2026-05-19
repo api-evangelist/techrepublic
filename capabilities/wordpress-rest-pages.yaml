@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TechRepublic WordPress REST API — Pages
+  description: 'TechRepublic WordPress REST API — Pages. 2 operations. Lead operation: List Pages. Self-contained Naftiko
+    capability covering one Techrepublic business surface.'
+  tags:
+  - Techrepublic
+  - Pages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TECHREPUBLIC_API_KEY: TECHREPUBLIC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wordpress-rest-pages
+    baseUri: https://www.techrepublic.com/wp-json/wp/v2
+    description: TechRepublic WordPress REST API — Pages business capability. Self-contained, no shared references.
+    resources:
+    - name: pages
+      path: /pages
+      operations:
+      - name: listpages
+        method: GET
+        description: List Pages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Current page of the collection.
+        - name: per_page
+          in: query
+          type: integer
+          description: Maximum number of items to be returned in result set.
+        - name: search
+          in: query
+          type: string
+          description: Limit results to those matching a string.
+    - name: pages-id
+      path: /pages/{id}
+      operations:
+      - name: getpage
+        method: GET
+        description: Get Page
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the page.
+          required: true
+  exposes:
+  - type: rest
+    namespace: wordpress-rest-pages-rest
+    port: 8080
+    description: REST adapter for TechRepublic WordPress REST API — Pages. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/pages
+      name: pages
+      description: REST surface for pages.
+      operations:
+      - method: GET
+        name: listpages
+        description: List Pages
+        call: wordpress-rest-pages.listpages
+        with:
+          page: rest.page
+          per_page: rest.per_page
+          search: rest.search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{id}
+      name: pages-id
+      description: REST surface for pages-id.
+      operations:
+      - method: GET
+        name: getpage
+        description: Get Page
+        call: wordpress-rest-pages.getpage
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wordpress-rest-pages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TechRepublic WordPress REST API — Pages. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-pages
+      description: List Pages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wordpress-rest-pages.listpages
+      with:
+        page: tools.page
+        per_page: tools.per_page
+        search: tools.search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-page
+      description: Get Page
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wordpress-rest-pages.getpage
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

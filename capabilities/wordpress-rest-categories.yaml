@@ -1,0 +1,142 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TechRepublic WordPress REST API — Categories
+  description: 'TechRepublic WordPress REST API — Categories. 2 operations. Lead operation: List Categories. Self-contained
+    Naftiko capability covering one Techrepublic business surface.'
+  tags:
+  - Techrepublic
+  - Categories
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TECHREPUBLIC_API_KEY: TECHREPUBLIC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wordpress-rest-categories
+    baseUri: https://www.techrepublic.com/wp-json/wp/v2
+    description: TechRepublic WordPress REST API — Categories business capability. Self-contained, no shared references.
+    resources:
+    - name: categories
+      path: /categories
+      operations:
+      - name: listcategories
+        method: GET
+        description: List Categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Current page of the collection.
+        - name: per_page
+          in: query
+          type: integer
+          description: Maximum number of items to be returned in result set.
+        - name: search
+          in: query
+          type: string
+          description: Limit results to those matching a string.
+        - name: orderby
+          in: query
+          type: string
+          description: Sort collection by object attribute.
+        - name: hide_empty
+          in: query
+          type: boolean
+          description: Whether to hide terms not assigned to any posts.
+    - name: categories-id
+      path: /categories/{id}
+      operations:
+      - name: getcategory
+        method: GET
+        description: Get Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the category.
+          required: true
+  exposes:
+  - type: rest
+    namespace: wordpress-rest-categories-rest
+    port: 8080
+    description: REST adapter for TechRepublic WordPress REST API — Categories. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/categories
+      name: categories
+      description: REST surface for categories.
+      operations:
+      - method: GET
+        name: listcategories
+        description: List Categories
+        call: wordpress-rest-categories.listcategories
+        with:
+          page: rest.page
+          per_page: rest.per_page
+          search: rest.search
+          orderby: rest.orderby
+          hide_empty: rest.hide_empty
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/categories/{id}
+      name: categories-id
+      description: REST surface for categories-id.
+      operations:
+      - method: GET
+        name: getcategory
+        description: Get Category
+        call: wordpress-rest-categories.getcategory
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wordpress-rest-categories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TechRepublic WordPress REST API — Categories. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-categories
+      description: List Categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wordpress-rest-categories.listcategories
+      with:
+        page: tools.page
+        per_page: tools.per_page
+        search: tools.search
+        orderby: tools.orderby
+        hide_empty: tools.hide_empty
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-category
+      description: Get Category
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wordpress-rest-categories.getcategory
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
