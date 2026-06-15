@@ -1,131 +1,92 @@
 # TechRepublic (techrepublic)
 
-TechRepublic is a leading IT and enterprise technology media site that provides IT professionals with news, analysis, tips, tutorials, best practices, and research on business technology. Covering topics including cloud computing, cybersecurity, artificial intelligence, enterprise software, hardware, and data management, TechRepublic serves technology decision-makers and practitioners across industries. The platform exposes content programmatically via WordPress REST API endpoints and standard RSS/Atom feeds across 150+ topic categories.
+TechRepublic is a leading IT and enterprise technology media site that provides IT professionals with news, analysis, tips, tutorials, best practices, and research on business technology. Covering topics including cloud computing, cybersecurity, artificial intelligence, enterprise software, hardware, and data management, TechRepublic serves technology decision-makers and practitioners across industries. The platform exposes its content programmatically via WordPress REST API endpoints and standard RSS/Atom feeds.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml)
 
 ## Scope
 
 - **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Enterprise IT, Media, Technology News, Content, Publishing
+- Enterprise IT
+- Media
+- Technology News
+- Content
+- Publishing
 
 ## Timestamps
 
 - **Created:** 2026-03-24
-- **Modified:** 2026-05-03
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### TechRepublic RSS Feed
 
-TechRepublic provides RSS/Atom feeds covering its full range of technology news and analysis across 150+ topic categories including AI, security, cloud, software, hardware, developer, data centers, mobility, and more. Standard RSS 2.0 and Atom feeds allow readers and developers to consume TechRepublic content programmatically using any standard feed reader or parsing library.
+TechRepublic provides RSS/Atom feeds covering its full range of technology news and analysis. Feeds are available for the main news stream and for over 150 individual topic categories including AI, security, cloud, software, hardware, developer, data centers, mobility, and more. Standard RSS 2.0 and Atom feeds allow readers and developers to consume TechRepublic content programmatically using any standard feed reader or parsing library. Topics span technology sectors, company coverage, geographic regions, and emerging technology areas.
 
-**Human URL:** [https://www.techrepublic.com/rssfeeds/](https://www.techrepublic.com/rssfeeds/)
+- **Human URL:** [https://www.techrepublic.com/rssfeeds/](https://www.techrepublic.com/rssfeeds/)
+- **Base URL:** `https://www.techrepublic.com`
 
-#### Tags:
+#### Tags
 
- - Content, Feed, News, RSS, Syndication
+- Content
+- Feed
+- News
+- RSS
+- Syndication
 
 #### Properties
 
 - [Documentation](https://www.techrepublic.com/rssfeeds/)
-- [RSSFeed](https://www.techrepublic.com/rssfeeds/)
+- [R S S Feed](https://www.techrepublic.com/rssfeeds/)
+- [Postman Collection](collections/techrepublic-wordpress-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/techrepublic-wordpress-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### TechRepublic WordPress REST API
 
-TechRepublic exposes the standard WordPress REST API at `/wp-json/wp/v2`, providing JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types. The API supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.
+TechRepublic is built on WordPress and exposes the standard WordPress REST API, providing JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types. The API is available at the /wp-json/wp/v2/ base path and supports filtering, pagination, and searching across all TechRepublic content. Endpoints include posts, pages, categories, tags, media, users, comments, and taxonomies. Enables developers to integrate TechRepublic articles and metadata into their own applications and workflows.
 
-**Human URL:** [https://developer.wordpress.org/rest-api/](https://developer.wordpress.org/rest-api/)
+- **Human URL:** [https://developer.wordpress.org/rest-api/](https://developer.wordpress.org/rest-api/)
+- **Base URL:** `https://www.techrepublic.com/wp-json/wp/v2`
 
-**Base URL:** https://www.techrepublic.com/wp-json/wp/v2
+#### Tags
 
-#### Tags:
-
- - Content, JSON, Media, Posts, Categories, REST, WordPress
+- Content
+- JSON
+- REST
+- WordPress
+- Posts
+- Categories
+- Media
 
 #### Properties
 
 - [Documentation](https://developer.wordpress.org/rest-api/)
-- [OpenAPI](openapi/techrepublic-wordpress-rest-api-openapi.yml)
-- [JSONSchema](json-schema/techrepublic-post-schema.json)
-- [JSONSchema](json-schema/techrepublic-category-schema.json)
-
-## Artifacts
-
-### OpenAPI Specifications
-
-| File | Description |
-|---|---|
-| [techrepublic-wordpress-rest-api-openapi.yml](openapi/techrepublic-wordpress-rest-api-openapi.yml) | WordPress REST API v2 - posts, pages, categories, tags, authors, media |
-
-### JSON Schemas
-
-| File | Description |
-|---|---|
-| [techrepublic-post-schema.json](json-schema/techrepublic-post-schema.json) | Schema for TechRepublic post/article objects |
-| [techrepublic-category-schema.json](json-schema/techrepublic-category-schema.json) | Schema for TechRepublic category/topic objects |
-
-### JSON Structure
-
-| File | Description |
-|---|---|
-| [techrepublic-post-structure.json](json-structure/techrepublic-post-structure.json) | Field-level documentation for post objects |
-
-### JSON-LD Context
-
-| File | Description |
-|---|---|
-| [techrepublic-context.jsonld](json-ld/techrepublic-context.jsonld) | Linked data context mapping WordPress terms to schema.org |
-
-### Examples
-
-| File | Description |
-|---|---|
-| [techrepublic-list-posts-example.json](examples/techrepublic-list-posts-example.json) | Example request/response for listing posts |
-| [techrepublic-get-post-example.json](examples/techrepublic-get-post-example.json) | Example request/response for getting a post |
-| [techrepublic-list-categories-example.json](examples/techrepublic-list-categories-example.json) | Example request/response for listing categories |
-
-### Spectral Rules
-
-| File | Description |
-|---|---|
-| [techrepublic-rules.yml](rules/techrepublic-rules.yml) | Spectral ruleset for TechRepublic API conventions |
-
-### Naftiko Capabilities
-
-| File | Description |
-|---|---|
-| [capabilities/content-discovery.yaml](capabilities/content-discovery.yaml) | Content discovery workflow - search articles, topics, authors (8 MCP tools) |
-| [capabilities/shared/wordpress-rest-api.yaml](capabilities/shared/wordpress-rest-api.yaml) | Shared WordPress REST API consumed definition |
-
-### Vocabulary
-
-| File | Description |
-|---|---|
-| [techrepublic-vocabulary.yml](vocabulary/techrepublic-vocabulary.yml) | Domain vocabulary for TechRepublic content and technology terms |
+- [OpenAPI](openapi/techrepublic-wordpress-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/techrepublic-wordpress-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/techrepublic-wordpress-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/techrepublic-post-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/techrepublic-category-schema.json) — [JSON Schema](https://json-schema.org/specification)
 
 ## Common Properties
 
 - [Website](https://www.techrepublic.com/)
 - [About](https://www.techrepublic.com/about/)
 - [Newsletter](https://www.techrepublic.com/newsletters/)
-- [RSSFeeds](https://www.techrepublic.com/rssfeeds/)
+- [R S S Feeds](https://www.techrepublic.com/rssfeeds/)
 - [Blog](https://www.techrepublic.com/topic/)
 - [Advertising](https://www.techrepublic.com/advertise/)
 - [Forum](https://www.techrepublic.com/forums/)
 - [Resources](https://www.techrepublic.com/resource-library/)
 - [LinkedIn](https://www.linkedin.com/company/techrepublic)
-- [X](https://x.com/TechRepublic)
+- [X (Twitter)](https://x.com/TechRepublic)
 - [Facebook](https://www.facebook.com/TechRepublic/)
 - [Instagram](https://www.instagram.com/techrepublic/)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com

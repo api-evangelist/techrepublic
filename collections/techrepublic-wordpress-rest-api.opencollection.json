@@ -1,0 +1,442 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TechRepublic WordPress REST API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/posts",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to posts published after a given ISO 8601 date."
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to posts published before a given ISO 8601 date."
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to all items that have the specified term assigned in the categories taxonomy."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to all items that have the specified term assigned in the tags taxonomy."
+              },
+              {
+                "name": "author",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to posts assigned to specific authors."
+              },
+              {
+                "name": "orderby",
+                "value": "",
+                "type": "query",
+                "description": "Sort collection by object attribute."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order sort attribute ascending or descending."
+              },
+              {
+                "name": "_embed",
+                "value": "",
+                "type": "query",
+                "description": "Embed linked resources in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of published posts from TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              },
+              {
+                "name": "_embed",
+                "value": "",
+                "type": "query",
+                "description": "Embed linked resources in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific post by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/categories",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "orderby",
+                "value": "",
+                "type": "query",
+                "description": "Sort collection by object attribute."
+              },
+              {
+                "name": "hide_empty",
+                "value": "",
+                "type": "query",
+                "description": "Whether to hide terms not assigned to any posts."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of categories available on TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the category."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific category by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/tags",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "hide_empty",
+                "value": "",
+                "type": "query",
+                "description": "Whether to hide terms not assigned to any posts."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of tags used on TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the tag."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific tag by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Authors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of authors who have published on TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Author",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the author."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific author profile by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/media",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "media_type",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to attachments of a particular media type."
+              },
+              {
+                "name": "mime_type",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to attachments of a particular MIME type."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of media items from TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the media item."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific media item by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/pages",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of pages published on TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/pages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the page."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific page by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
