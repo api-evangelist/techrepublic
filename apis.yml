@@ -94,7 +94,7 @@ common:
     description: Advertising information for TechRepublic.
   - url: https://www.techrepublic.com/forums/
     name: TechRepublic Community Forums
-    type: Forum
+    type: Forums
     description: Community forums for TechRepublic readers.
   - url: https://www.techrepublic.com/resource-library/
     name: TechRepublic Resource Library
