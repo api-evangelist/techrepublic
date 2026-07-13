@@ -5,7 +5,7 @@
       "source": "https://www.techrepublic.com/feed/",
       "feed_url": "https://www.techrepublic.com/feed/",
       "title": "",
-      "saved": 20,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 150,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 190,
+  "fetched": "2026-07-11T11:50:51Z"
 }
