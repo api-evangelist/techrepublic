@@ -68,6 +68,8 @@ apis:
       - type: JSONSchema
         url: json-schema/techrepublic-category-schema.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/techrepublic-agentic-access.yml
   - type: DomainSecurity
     url: security/techrepublic-domain-security.yml
   - url: https://www.techrepublic.com/
