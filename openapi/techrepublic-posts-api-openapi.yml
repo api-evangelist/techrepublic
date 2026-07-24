@@ -1,0 +1,245 @@
+openapi: 3.0.3
+info:
+  title: TechRepublic WordPress REST Authors Posts API
+  description: The TechRepublic WordPress REST API provides JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types published on TechRepublic.com. Built on the standard WordPress REST API framework, it supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.
+  version: 2.0.0
+  contact:
+    url: https://www.techrepublic.com/about/
+  license:
+    name: WordPress License (GPL-2.0)
+    url: https://wordpress.org/about/license/
+servers:
+- url: https://www.techrepublic.com/wp-json/wp/v2
+  description: TechRepublic WordPress REST API v2
+tags:
+- name: Posts
+paths:
+  /posts:
+    get:
+      operationId: listPosts
+      summary: List Posts
+      description: Retrieve a collection of published posts from TechRepublic.
+      tags:
+      - Posts
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Limit response to posts published after a given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: before
+        in: query
+        description: Limit response to posts published before a given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: categories
+        in: query
+        description: Limit result set to all items that have the specified term assigned in the categories taxonomy.
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: tags
+        in: query
+        description: Limit result set to all items that have the specified term assigned in the tags taxonomy.
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: author
+        in: query
+        description: Limit result set to posts assigned to specific authors.
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: orderby
+        in: query
+        description: Sort collection by object attribute.
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: _embed
+        in: query
+        description: Embed linked resources in the response.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A list of posts.
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages in the collection.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+  /posts/{id}:
+    get:
+      operationId: getPost
+      summary: Get Post
+      description: Retrieve a specific post by its ID.
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier for the post.
+        required: true
+        schema:
+          type: integer
+      - name: _embed
+        in: query
+        description: Embed linked resources in the response.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A single post object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '404':
+          description: Post not found.
+components:
+  schemas:
+    Post:
+      type: object
+      description: A TechRepublic article or news post.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the post.
+        date:
+          type: string
+          format: date-time
+          description: The date the post was published, in the site's timezone.
+        date_gmt:
+          type: string
+          format: date-time
+          description: The date the post was published, as GMT.
+        modified:
+          type: string
+          format: date-time
+          description: The date the post was last modified, in the site's timezone.
+        modified_gmt:
+          type: string
+          format: date-time
+          description: The date the post was last modified, as GMT.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the post unique to its type.
+        status:
+          type: string
+          description: A named status for the post.
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+        link:
+          type: string
+          format: uri
+          description: URL to the post.
+        title:
+          type: object
+          description: The title for the post.
+          properties:
+            rendered:
+              type: string
+              description: HTML representation of the title.
+        content:
+          type: object
+          description: The content for the post.
+          properties:
+            rendered:
+              type: string
+              description: HTML representation of the content.
+            protected:
+              type: boolean
+              description: Whether the content is protected with a password.
+        excerpt:
+          type: object
+          description: The excerpt for the post.
+          properties:
+            rendered:
+              type: string
+              description: HTML representation of the excerpt.
+        author:
+          type: integer
+          description: The ID for the author of the post.
+        featured_media:
+          type: integer
+          description: The ID of the featured media for the post.
+        categories:
+          type: array
+          description: The terms assigned to the post in the category taxonomy.
+          items:
+            type: integer
+        tags:
+          type: array
+          description: The terms assigned to the post in the post_tag taxonomy.
+          items:
+            type: integer

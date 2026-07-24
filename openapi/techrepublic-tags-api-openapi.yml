@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: TechRepublic WordPress REST Authors Tags API
+  description: The TechRepublic WordPress REST API provides JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types published on TechRepublic.com. Built on the standard WordPress REST API framework, it supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.
+  version: 2.0.0
+  contact:
+    url: https://www.techrepublic.com/about/
+  license:
+    name: WordPress License (GPL-2.0)
+    url: https://wordpress.org/about/license/
+servers:
+- url: https://www.techrepublic.com/wp-json/wp/v2
+  description: TechRepublic WordPress REST API v2
+tags:
+- name: Tags
+paths:
+  /tags:
+    get:
+      operationId: listTags
+      summary: List Tags
+      description: Retrieve a collection of tags used on TechRepublic.
+      tags:
+      - Tags
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: hide_empty
+        in: query
+        description: Whether to hide terms not assigned to any posts.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A list of tags.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+  /tags/{id}:
+    get:
+      operationId: getTag
+      summary: Get Tag
+      description: Retrieve a specific tag by its ID.
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier for the tag.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A single tag object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '404':
+          description: Tag not found.
+components:
+  schemas:
+    Tag:
+      type: object
+      description: A tag used to classify TechRepublic content.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the term.
+        count:
+          type: integer
+          description: Number of published posts within the term.
+        description:
+          type: string
+          description: HTML description of the term.
+        link:
+          type: string
+          format: uri
+          description: URL of the term.
+        name:
+          type: string
+          description: HTML title for the term.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the term unique to its type.
+        taxonomy:
+          type: string
+          description: Type attribution for the term.

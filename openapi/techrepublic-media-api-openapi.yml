@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: TechRepublic WordPress REST Authors Media API
+  description: The TechRepublic WordPress REST API provides JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types published on TechRepublic.com. Built on the standard WordPress REST API framework, it supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.
+  version: 2.0.0
+  contact:
+    url: https://www.techrepublic.com/about/
+  license:
+    name: WordPress License (GPL-2.0)
+    url: https://wordpress.org/about/license/
+servers:
+- url: https://www.techrepublic.com/wp-json/wp/v2
+  description: TechRepublic WordPress REST API v2
+tags:
+- name: Media
+paths:
+  /media:
+    get:
+      operationId: listMedia
+      summary: List Media
+      description: Retrieve a collection of media items from TechRepublic.
+      tags:
+      - Media
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: media_type
+        in: query
+        description: Limit result set to attachments of a particular media type.
+        required: false
+        schema:
+          type: string
+          enum:
+          - image
+          - video
+          - text
+          - application
+          - audio
+      - name: mime_type
+        in: query
+        description: Limit result set to attachments of a particular MIME type.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of media items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaItem'
+  /media/{id}:
+    get:
+      operationId: getMedia
+      summary: Get Media
+      description: Retrieve a specific media item by ID.
+      tags:
+      - Media
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier for the media item.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A single media item object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+        '404':
+          description: Media item not found.
+components:
+  schemas:
+    MediaItem:
+      type: object
+      description: A media attachment associated with TechRepublic content.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the media item.
+        date:
+          type: string
+          format: date-time
+          description: The date the media was published.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the media item.
+        status:
+          type: string
+          description: A named status for the media item.
+        link:
+          type: string
+          format: uri
+          description: URL to the media item page.
+        title:
+          type: object
+          description: The title for the media item.
+          properties:
+            rendered:
+              type: string
+        alt_text:
+          type: string
+          description: Alternative text to display when attachment is not displayed.
+        caption:
+          type: object
+          description: The caption for the media item.
+          properties:
+            rendered:
+              type: string
+        media_type:
+          type: string
+          description: Type of resource.
+          enum:
+          - image
+          - file
+        mime_type:
+          type: string
+          description: MIME type of the media item.
+        source_url:
+          type: string
+          format: uri
+          description: URL to the original attachment file.
+        media_details:
+          type: object
+          description: Details about the media file.
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+            file:
+              type: string

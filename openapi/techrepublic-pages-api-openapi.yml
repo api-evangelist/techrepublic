@@ -1,0 +1,131 @@
+openapi: 3.0.3
+info:
+  title: TechRepublic WordPress REST Authors Pages API
+  description: The TechRepublic WordPress REST API provides JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types published on TechRepublic.com. Built on the standard WordPress REST API framework, it supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.
+  version: 2.0.0
+  contact:
+    url: https://www.techrepublic.com/about/
+  license:
+    name: WordPress License (GPL-2.0)
+    url: https://wordpress.org/about/license/
+servers:
+- url: https://www.techrepublic.com/wp-json/wp/v2
+  description: TechRepublic WordPress REST API v2
+tags:
+- name: Pages
+paths:
+  /pages:
+    get:
+      operationId: listPages
+      summary: List Pages
+      description: Retrieve a collection of pages published on TechRepublic.
+      tags:
+      - Pages
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of pages.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Page'
+  /pages/{id}:
+    get:
+      operationId: getPage
+      summary: Get Page
+      description: Retrieve a specific page by ID.
+      tags:
+      - Pages
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier for the page.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A single page object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+        '404':
+          description: Page not found.
+components:
+  schemas:
+    Page:
+      type: object
+      description: A static page on TechRepublic.
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the page.
+        date:
+          type: string
+          format: date-time
+          description: The date the page was published.
+        modified:
+          type: string
+          format: date-time
+          description: The date the page was last modified.
+        slug:
+          type: string
+          description: An alphanumeric identifier for the page unique to its type.
+        status:
+          type: string
+          description: A named status for the page.
+        link:
+          type: string
+          format: uri
+          description: URL to the page.
+        title:
+          type: object
+          description: The title for the page.
+          properties:
+            rendered:
+              type: string
+        content:
+          type: object
+          description: The content for the page.
+          properties:
+            rendered:
+              type: string
+        excerpt:
+          type: object
+          description: The excerpt for the page.
+          properties:
+            rendered:
+              type: string
+        author:
+          type: integer
+          description: The ID for the author of the page.
+        parent:
+          type: integer
+          description: The ID for the parent of the page.
+        menu_order:
+          type: integer
+          description: The order of the page in relation to other pages.
