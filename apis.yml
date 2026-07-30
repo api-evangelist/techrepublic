@@ -7,7 +7,19 @@ description: >-
   technology decision-makers and practitioners across industries. The platform exposes its content programmatically via
   WordPress REST API endpoints and standard RSS/Atom feeds.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/techrepublic.png
 tags:
   - Enterprise IT
   - Media
@@ -19,54 +31,124 @@ created: '2026-03-24'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: techrepublic:rss-feed
-    name: TechRepublic RSS Feed
-    description: >-
-      TechRepublic provides RSS/Atom feeds covering its full range of technology news and analysis. Feeds are available
-      for the main news stream and for over 150 individual topic categories including AI, security, cloud, software,
-      hardware, developer, data centers, mobility, and more. Standard RSS 2.0 and Atom feeds allow readers and
-      developers to consume TechRepublic content programmatically using any standard feed reader or parsing library.
-      Topics span technology sectors, company coverage, geographic regions, and emerging technology areas.
-    humanURL: https://www.techrepublic.com/rssfeeds/
-    baseURL: https://www.techrepublic.com
-    tags:
-      - Content
-      - Feed
-      - News
-      - RSS
-      - Syndication
-    properties:
-      - type: Documentation
-        url: https://www.techrepublic.com/rssfeeds/
-      - type: RSSFeed
-        url: https://www.techrepublic.com/rssfeeds/
-  - aid: techrepublic:wordpress-rest-api
-    name: TechRepublic WordPress REST API
-    description: >-
-      TechRepublic is built on WordPress and exposes the standard WordPress REST API, providing JSON endpoints for
-      accessing posts, pages, categories, tags, authors, media, and other content types. The API is available at the
-      /wp-json/wp/v2/ base path and supports filtering, pagination, and searching across all TechRepublic content.
-      Endpoints include posts, pages, categories, tags, media, users, comments, and taxonomies. Enables developers to
-      integrate TechRepublic articles and metadata into their own applications and workflows.
-    humanURL: https://developer.wordpress.org/rest-api/
-    baseURL: https://www.techrepublic.com/wp-json/wp/v2
-    tags:
-      - Content
-      - JSON
-      - REST
-      - WordPress
-      - Posts
-      - Categories
-      - Media
-    properties:
-      - type: Documentation
-        url: https://developer.wordpress.org/rest-api/
-      - type: OpenAPI
-        url: openapi/techrepublic-wordpress-rest-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/techrepublic-post-schema.json
-      - type: JSONSchema
-        url: json-schema/techrepublic-category-schema.json
+- aid: techrepublic:rss-feed
+  name: TechRepublic RSS Feed
+  description: >-
+    TechRepublic provides RSS/Atom feeds covering its full range of technology news and analysis. Feeds
+    are available for the main news stream and for over 150 individual topic categories including AI,
+    security, cloud, software, hardware, developer, data centers, mobility, and more. Standard RSS 2.0
+    and Atom feeds allow readers and developers to consume TechRepublic content programmatically using
+    any standard feed reader or parsing library. Topics span technology sectors, company coverage, geographic
+    regions, and emerging technology areas.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Content
+  - Feed
+  - News
+  - RSS
+  - Syndication
+  properties:
+  - type: Documentation
+    url: https://www.techrepublic.com/rssfeeds/
+  - type: RSSFeed
+    url: https://www.techrepublic.com/rssfeeds/
+- aid: techrepublic:techrepublic-authors-api
+  name: TechRepublic Authors API
+  description: The Authors API from TechRepublic — 2 operation(s) for authors.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Authors
+  properties:
+  - type: OpenAPI
+    url: openapi/techrepublic-authors-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: JSONSchema
+    url: json-schema/techrepublic-post-schema.json
+  - type: JSONSchema
+    url: json-schema/techrepublic-category-schema.json
+- aid: techrepublic:techrepublic-categories-api
+  name: TechRepublic Categories API
+  description: The Categories API from TechRepublic — 2 operation(s) for categories.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/techrepublic-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: JSONSchema
+    url: json-schema/techrepublic-post-schema.json
+  - type: JSONSchema
+    url: json-schema/techrepublic-category-schema.json
+- aid: techrepublic:techrepublic-media-api
+  name: TechRepublic Media API
+  description: The Media API from TechRepublic — 2 operation(s) for media.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/techrepublic-media-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: JSONSchema
+    url: json-schema/techrepublic-post-schema.json
+  - type: JSONSchema
+    url: json-schema/techrepublic-category-schema.json
+- aid: techrepublic:techrepublic-pages-api
+  name: TechRepublic Pages API
+  description: The Pages API from TechRepublic — 2 operation(s) for pages.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/techrepublic-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: JSONSchema
+    url: json-schema/techrepublic-post-schema.json
+  - type: JSONSchema
+    url: json-schema/techrepublic-category-schema.json
+- aid: techrepublic:techrepublic-posts-api
+  name: TechRepublic Posts API
+  description: The Posts API from TechRepublic — 2 operation(s) for posts.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/techrepublic-posts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: JSONSchema
+    url: json-schema/techrepublic-post-schema.json
+  - type: JSONSchema
+    url: json-schema/techrepublic-category-schema.json
+- aid: techrepublic:techrepublic-tags-api
+  name: TechRepublic Tags API
+  description: The Tags API from TechRepublic — 2 operation(s) for tags.
+  humanURL: https://www.techrepublic.com/rssfeeds/
+  baseURL: https://www.techrepublic.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/techrepublic-tags-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: JSONSchema
+    url: json-schema/techrepublic-post-schema.json
+  - type: JSONSchema
+    url: json-schema/techrepublic-category-schema.json
 common:
   - type: AgenticAccess
     url: agentic-access/techrepublic-agentic-access.yml
