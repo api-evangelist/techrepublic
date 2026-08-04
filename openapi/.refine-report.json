@@ -1,0 +1,24 @@
+{
+  "provider": "techrepublic",
+  "sources": [
+    "techrepublic-authors-api-openapi.yml",
+    "techrepublic-categories-api-openapi.yml",
+    "techrepublic-media-api-openapi.yml",
+    "techrepublic-pages-api-openapi.yml",
+    "techrepublic-posts-api-openapi.yml",
+    "techrepublic-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "techrepublic-authors-api-openapi.yml",
+    "techrepublic-categories-api-openapi.yml",
+    "techrepublic-media-api-openapi.yml",
+    "techrepublic-pages-api-openapi.yml",
+    "techrepublic-posts-api-openapi.yml",
+    "techrepublic-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
