@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "b9fed977-9d49-4801-8cd7-9839b9fc89ca",
+      "name": "Media",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f50fae7b-2b15-48de-b7b8-8a604fa43403",
+          "name": "List Media",
+          "request": {
+            "name": "List Media",
+            "description": {
+              "content": "Retrieve a collection of media items from TechRepublic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Current page of the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Maximum number of items to be returned in result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Limit results to those matching a string."
+                },
+                {
+                  "disabled": false,
+                  "key": "media_type",
+                  "value": "<string>",
+                  "description": "Limit result set to attachments of a particular media type."
+                },
+                {
+                  "disabled": false,
+                  "key": "mime_type",
+                  "value": "<string>",
+                  "description": "Limit result set to attachments of a particular MIME type."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "633f98a3-4fba-47a1-bd29-079c44fb4488",
+              "name": "A list of media items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "media_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mime_type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4951,\n    \"date\": \"1994-03-27T06:12:22.501Z\",\n    \"slug\": \"string\",\n    \"status\": \"string\",\n    \"link\": \"https://Exw.ikhqte5KppZxnEXMXOqnIM+qeTeVwBcpVruhFIrR2mS230pHEN\",\n    \"title\": {\n      \"rendered\": \"string\"\n    },\n    \"alt_text\": \"string\",\n    \"caption\": {\n      \"rendered\": \"string\"\n    },\n    \"media_type\": \"file\",\n    \"mime_type\": \"string\",\n    \"source_url\": \"https://IbPbbybbQgEb.oczQ,3NxThvuEpTMPA+LukCUPWg2,PX\",\n    \"media_details\": {\n      \"width\": 3032,\n      \"height\": 8895,\n      \"file\": \"string\"\n    }\n  },\n  {\n    \"id\": 9958,\n    \"date\": \"2005-10-14T09:10:37.808Z\",\n    \"slug\": \"string\",\n    \"status\": \"string\",\n    \"link\": \"http://CMVQIZYxaLXHJOciCOzHb.qjusv6sJBkTosCNfFgdxWeDqa\",\n    \"title\": {\n      \"rendered\": \"string\"\n    },\n    \"alt_text\": \"string\",\n    \"caption\": {\n      \"rendered\": \"string\"\n    },\n    \"media_type\": \"file\",\n    \"mime_type\": \"string\",\n    \"source_url\": \"https://WgykHiqUtAmHE.pzxhrOJE-sGmyk64s\",\n    \"media_details\": {\n      \"width\": 7807,\n      \"height\": 7198,\n      \"file\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "691b4001-1898-4d19-9201-36d48d2a9e63",
+          "name": "Get Media",
+          "request": {
+            "name": "Get Media",
+            "description": {
+              "content": "Retrieve a specific media item by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the media item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "547adb4d-06df-4e12-8437-2fb4e18c1818",
+              "name": "A single media item object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the media item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1339,\n  \"date\": \"1995-09-30T15:00:55.603Z\",\n  \"slug\": \"string\",\n  \"status\": \"string\",\n  \"link\": \"https://GlRUy.dmhH5,vgCB\",\n  \"title\": {\n    \"rendered\": \"string\"\n  },\n  \"alt_text\": \"string\",\n  \"caption\": {\n    \"rendered\": \"string\"\n  },\n  \"media_type\": \"image\",\n  \"mime_type\": \"string\",\n  \"source_url\": \"http://XixXfLKHcYIQQvUOr.zyC7HAh1E\",\n  \"media_details\": {\n    \"width\": 8210,\n    \"height\": 2626,\n    \"file\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d048486a-eda0-4e49-9e38-b115d36f13b1",
+              "name": "Media item not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the media item."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.techrepublic.com/wp-json/wp/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "de47bb79-0091-403c-a0c4-9027d90156ec",
+    "name": "TechRepublic WordPress REST Authors Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TechRepublic WordPress REST API provides JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types published on TechRepublic.com. Built on the standard WordPress REST API framework, it supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.",
+      "type": "text/plain"
+    }
+  }
+}

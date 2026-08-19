@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TechRepublic WordPress REST Authors Pages API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/pages",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              }
+            ]
+          },
+          "docs": "Retrieve a collection of pages published on TechRepublic."
+        },
+        {
+          "info": {
+            "name": "Get Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.techrepublic.com/wp-json/wp/v2/pages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the page."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific page by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

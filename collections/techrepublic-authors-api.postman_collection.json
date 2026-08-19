@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "fca3459e-3ef8-460b-83a3-88a79e3692ed",
+      "name": "Authors",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71dc4393-de7b-41c5-b20d-ab21d47b62ad",
+          "name": "List Authors",
+          "request": {
+            "name": "List Authors",
+            "description": {
+              "content": "Retrieve a collection of authors who have published on TechRepublic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Current page of the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Maximum number of items to be returned in result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Limit results to those matching a string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14ac6e17-27be-4ea5-a50e-9c921b16b2fe",
+              "name": "A list of authors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8072,\n    \"name\": \"string\",\n    \"url\": \"https://ia.kagWSTL2EI.gRQJfUdoSdcWfa9QNE,SCsDsj3x8i3g6NJDAS0o1Qa\",\n    \"description\": \"string\",\n    \"link\": \"https://mUMVoBACcGVfKu.pzEULTt0MpC2QcW,HxM6zi8ViFx6dTBkn3Yn9HOeQr2msJGsZosAv-vInbgNHAiA\",\n    \"slug\": \"string\",\n    \"avatar_urls\": {\n      \"24\": \"https://WKetyFjrL.oepMEVXt69zQtxhtB0g,,Ptn1S10mgYwZKznFV,yQp2mVl+leGysEe9Y.gUor\",\n      \"48\": \"http://BBFXDflGeQqfhzwlZvABZY.nbTN10qeU0Cg79t.BbDZmcpTc7VnILWGb\",\n      \"96\": \"http://NSdhMTIJfsRDz.ehthkYqQI2GxBMqXEvqIuilTEfHJEiMSampICXmmHg-Rfp1OjAa\"\n    }\n  },\n  {\n    \"id\": 4534,\n    \"name\": \"string\",\n    \"url\": \"http://XqD.hvD6GJpthyWp\",\n    \"description\": \"string\",\n    \"link\": \"https://FUHdbtSh.jnoOXVUrFkSTkY3WOs9qSW\",\n    \"slug\": \"string\",\n    \"avatar_urls\": {\n      \"24\": \"https://eCHakPTyDgYFJkVDvQjsJKzZouVDVmUM.jguOZyy6,Q98\",\n      \"48\": \"http://vRriaKCGnJqSoQzm.doudGGcEyh,+qFQ7jExSMjDSNr2bCF+\",\n      \"96\": \"https://gLElwAdRuZOulOaUsQOZDPIi.ihMUpE51IJOfXtdCAfeiU,xFb5Uio5Um8wxtB23RscZu\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c744e5b6-daca-4798-a78d-551bf6129cad",
+          "name": "Get Author",
+          "request": {
+            "name": "Get Author",
+            "description": {
+              "content": "Retrieve a specific author profile by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the author."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b354de5-b343-46fb-ac86-625ed60ffbfe",
+              "name": "A single author object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the author."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6464,\n  \"name\": \"string\",\n  \"url\": \"https://ENXcg.wevwGITDMHKcPnI0OR9oGUn\",\n  \"description\": \"string\",\n  \"link\": \"https://BOETjPiTHYZfpbLsYs.eogjbfAhLxnloj1N.L6nAVIODuPJdVbeaoH2e\",\n  \"slug\": \"string\",\n  \"avatar_urls\": {\n    \"24\": \"https://pFDGdSpkVqmp.rcnuSOs9bVAwxKq+MJ.CJCZb.,EmXplm4tzuY3Ux3uZ+\",\n    \"48\": \"http://TdaMDjZjnvCffvxYf.wrcX3ZRzqPKpZX,eCxOCBqBUocL2o\",\n    \"96\": \"https://mhZNWsGbyeNazoBQphuN.tkCPFoDpNfWivdCNLLNzEDV14zVI6NLxs4w4zpoTWiE3yfA.krDosWhhU\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d453e76-6286-420f-a5b1-1f50e4e83357",
+              "name": "Author not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the author."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.techrepublic.com/wp-json/wp/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea7282f3-8fe5-47e3-9796-e82a1331a133",
+    "name": "TechRepublic WordPress REST Authors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TechRepublic WordPress REST API provides JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types published on TechRepublic.com. Built on the standard WordPress REST API framework, it supports filtering, pagination, and full-text search across all TechRepublic technology news and analysis content.",
+      "type": "text/plain"
+    }
+  }
+}
