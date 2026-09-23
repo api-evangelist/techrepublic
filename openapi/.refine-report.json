@@ -1,12 +1,7 @@
 {
   "provider": "techrepublic",
   "sources": [
-    "techrepublic-authors-api-openapi.yml",
-    "techrepublic-categories-api-openapi.yml",
-    "techrepublic-media-api-openapi.yml",
-    "techrepublic-pages-api-openapi.yml",
-    "techrepublic-posts-api-openapi.yml",
-    "techrepublic-tags-api-openapi.yml"
+    "_original/techrepublic-wordpress-rest-api-openapi.yml"
   ],
   "outputs": [
     "techrepublic-authors-api-openapi.yml",
@@ -19,6 +14,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "techrepublic-wordpress-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Authors",
+    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Categories",
+    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Media",
+    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Pages",
+    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Posts",
+    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Tags",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "techrepublic-authors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "techrepublic-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "techrepublic-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "techrepublic-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "techrepublic-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "techrepublic-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
