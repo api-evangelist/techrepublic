@@ -1,7 +1,12 @@
 {
   "provider": "techrepublic",
   "sources": [
-    "_original/techrepublic-wordpress-rest-api-openapi.yml"
+    "techrepublic-authors-api-openapi.yml",
+    "techrepublic-categories-api-openapi.yml",
+    "techrepublic-media-api-openapi.yml",
+    "techrepublic-pages-api-openapi.yml",
+    "techrepublic-posts-api-openapi.yml",
+    "techrepublic-tags-api-openapi.yml"
   ],
   "outputs": [
     "techrepublic-authors-api-openapi.yml",
@@ -13,24 +18,18 @@
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [
-    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "techrepublic-wordpress-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Authors",
-    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Categories",
-    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Media",
-    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Pages",
-    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Posts",
-    "techrepublic-wordpress-rest-api-openapi.yml: declared missing tag: Tags",
-    "apis.yml register: already-registered"
+  "warnings": [
+    "techrepublic-authors-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /users get, /users/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "techrepublic-categories-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /categories get, /categories/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "techrepublic-media-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /media get, /media/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "techrepublic-pages-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /pages get, /pages/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "techrepublic-posts-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /posts get, /posts/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "techrepublic-tags-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /tags get, /tags/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
   ],
-  "skipped": [
-    "techrepublic-authors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "techrepublic-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "techrepublic-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "techrepublic-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "techrepublic-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "techrepublic-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
-  ]
+  "notes": [
+    "techrepublic-wordpress-rest-api-openapi.yml: WordPress site /wp-json spec, not split (roadmap#484)",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apis.yml register: written (+1 apis, 2 total)"
+  ],
+  "skipped": []
 }
