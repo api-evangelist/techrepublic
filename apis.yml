@@ -79,6 +79,12 @@ apis:
   - type: Documentation
     url: https://www.techrepublic.com/wp-json
 common:
+  - type: Plans
+    url: plans/techrepublic-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/techrepublic-rate-limits.yml
+  - type: FinOps
+    url: finops/techrepublic-finops.yml
   - type: AgenticAccess
     url: agentic-access/techrepublic-agentic-access.yml
   - type: DomainSecurity
