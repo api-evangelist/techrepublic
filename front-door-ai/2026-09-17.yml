@@ -1,0 +1,36 @@
+# Front Door AI Index — techrepublic — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: techrepublic
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: www.techrepublic.com
+  final_host: www.techrepublic.com
+  ownership: own
+  owner: techrepublic
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 40
+  band: 6
+  band_label: dominant
+  host_score: 40
+  density: 30.23
+  words: 1323
+  tiers:
+    agentic: 2
+    core: 30
+    model: 8
+  ambiguous: 7
+  top_terms:
+    AI: 25
+    artificial intelligence: 5
+    intelligence: 5
+    OpenAI: 4
+    AI agent: 2
+    GPT: 2
+    agent: 2
+    Anthropic: 1
+    Claude: 1
