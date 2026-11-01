@@ -1,4 +1,4 @@
-# TechRepublic (techrepublic)
+# TechRepublic
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,91 +66,159 @@
 
 TechRepublic is a leading IT and enterprise technology media site that provides IT professionals with news, analysis, tips, tutorials, best practices, and research on business technology. Covering topics including cloud computing, cybersecurity, artificial intelligence, enterprise software, hardware, and data management, TechRepublic serves technology decision-makers and practitioners across industries. The platform exposes its content programmatically via WordPress REST API endpoints and standard RSS/Atom feeds.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/techrepublic/refs/heads/main/apis.yml)
+**Areas:** Enterprise IT · Media · Technology News · Content · Publishing
 
-## Scope
+## TechRepublic on APIs.io
 
-- **Type:** Index
+Everything profiled for TechRepublic is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/techrepublic/](https://apis.io/providers/techrepublic/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (2)
 
-- Enterprise IT
-- Media
-- Technology News
-- Content
-- Publishing
+- [TechRepublic RSS Feed](https://apis.io/apis/techrepublic/rss-feed/) — TechRepublic provides RSS/Atom feeds covering its full range of technology news and analysis. Feeds are available for the main news stream and for over 150…
+- [TechRepublic Website (WordPress REST)](https://apis.io/apis/techrepublic/techrepublic-com-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the TechRepublic website at www.techrepublic.com: the route index of the site's content management system,…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-24
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### TechRepublic RSS Feed
+Which operations an agent can call, which act, and which need a human in the loop.
 
-TechRepublic provides RSS/Atom feeds covering its full range of technology news and analysis. Feeds are available for the main news stream and for over 150 individual topic categories including AI, security, cloud, software, hardware, developer, data centers, mobility, and more. Standard RSS 2.0 and Atom feeds allow readers and developers to consume TechRepublic content programmatically using any standard feed reader or parsing library. Topics span technology sectors, company coverage, geographic regions, and emerging technology areas.
+- [Techrepublic Agentic Access](https://apis.io/agentic-access/techrepublic/techrepublic-agentic-access/)
 
-- **Human URL:** [https://www.techrepublic.com/rssfeeds/](https://www.techrepublic.com/rssfeeds/)
-- **Base URL:** `https://www.techrepublic.com`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Content
-- Feed
-- News
-- RSS
-- Syndication
+- [TechRepublic Category](https://apis.io/schemas/techrepublic/techrepublic-category/)
+- [TechRepublic Post](https://apis.io/schemas/techrepublic/techrepublic-post/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://www.techrepublic.com/rssfeeds/)
-- [R S S Feed](https://www.techrepublic.com/rssfeeds/)
-- [Postman Collection](collections/techrepublic-wordpress-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/techrepublic-wordpress-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### TechRepublic WordPress REST API
+- [Techrepublic Post Structure](https://apis.io/json-structure/techrepublic/techrepublic-post-structure/)
 
-TechRepublic is built on WordPress and exposes the standard WordPress REST API, providing JSON endpoints for accessing posts, pages, categories, tags, authors, media, and other content types. The API is available at the /wp-json/wp/v2/ base path and supports filtering, pagination, and searching across all TechRepublic content. Endpoints include posts, pages, categories, tags, media, users, comments, and taxonomies. Enables developers to integrate TechRepublic articles and metadata into their own applications and workflows.
+#### JSON-LD (1)
 
-- **Human URL:** [https://developer.wordpress.org/rest-api/](https://developer.wordpress.org/rest-api/)
-- **Base URL:** `https://www.techrepublic.com/wp-json/wp/v2`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Techrepublic Context](https://apis.io/jsonld/techrepublic/techrepublic-context/)
 
-- Content
-- JSON
-- REST
-- WordPress
-- Posts
-- Categories
-- Media
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://developer.wordpress.org/rest-api/)
-- [OpenAPI](openapi/techrepublic-wordpress-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/techrepublic-wordpress-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/techrepublic-wordpress-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/techrepublic-post-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/techrepublic-category-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Techrepublic Vocabulary](https://apis.io/vocabularies/techrepublic/techrepublic-vocabulary/)
 
-## Common Properties
+#### Examples (3)
+
+Example requests and responses.
+
+- [Techrepublic Get Post Example](https://apis.io/examples/techrepublic/techrepublic-get-post-example/)
+- [Techrepublic List Categories Example](https://apis.io/examples/techrepublic/techrepublic-list-categories-example/)
+- [Techrepublic List Posts Example](https://apis.io/examples/techrepublic/techrepublic-list-posts-example/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [TechRepublic WordPress REST Authors API](https://apis.io/collections/techrepublic/open-techrepublic-authors-api/)
+- [TechRepublic WordPress REST Authors Categories API](https://apis.io/collections/techrepublic/open-techrepublic-categories-api/)
+- [TechRepublic WordPress REST Authors Media API](https://apis.io/collections/techrepublic/open-techrepublic-media-api/)
+- [TechRepublic WordPress REST Authors Pages API](https://apis.io/collections/techrepublic/open-techrepublic-pages-api/)
+- [TechRepublic WordPress REST Authors Posts API](https://apis.io/collections/techrepublic/open-techrepublic-posts-api/)
+- [TechRepublic WordPress REST Authors Tags API](https://apis.io/collections/techrepublic/open-techrepublic-tags-api/)
+- [TechRepublic WordPress REST API](https://apis.io/collections/techrepublic/open-techrepublic-wordpress-rest-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [TechRepublic — jsonschema rules](https://apis.io/rules/techrepublic/techrepublic-jsonschema-spectral-rules/)
+- [TechRepublic API Rules](https://apis.io/rules/techrepublic/techrepublic-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Techrepublic Domain Security](https://apis.io/security/techrepublic/techrepublic-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Techrepublic Plans Pricing](https://apis.io/plans/techrepublic/techrepublic-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Techrepublic Rate Limits](https://apis.io/rate-limits/techrepublic/techrepublic-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Techrepublic Finops](https://apis.io/finops/techrepublic/techrepublic-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.techrepublic.com/)
-- [About](https://www.techrepublic.com/about/)
-- [Newsletter](https://www.techrepublic.com/newsletters/)
-- [R S S Feeds](https://www.techrepublic.com/rssfeeds/)
 - [Blog](https://www.techrepublic.com/topic/)
-- [Advertising](https://www.techrepublic.com/advertise/)
-- [Forum](https://www.techrepublic.com/forums/)
-- [Resources](https://www.techrepublic.com/resource-library/)
-- [LinkedIn](https://www.linkedin.com/company/techrepublic)
-- [X (Twitter)](https://x.com/TechRepublic)
-- [Facebook](https://www.facebook.com/TechRepublic/)
-- [Instagram](https://www.instagram.com/techrepublic/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 14.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 48.2 |
+| Contract quality | 12.3 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 7.9 |
+
+**Agent readiness 2.8** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/techrepublic/](https://apis.io/providers/techrepublic/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TechRepublic: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/techrepublic/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
